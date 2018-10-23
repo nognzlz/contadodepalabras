@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="form-group" *ngFor="let palabra of palabras; let i = index">
+        <div class="row">
+          <label for="palabra" class="col-md-2 col-form-label">{{palabra + ": "}}</label>
+          <div class="col-md-8">
+            <input id="palabra" class="form-control" 
+            [(ngModel)]="inputPalabras[i].valor" 
+            (ngModelChange)="verificar(i)" 
+            [disabled]="inputPalabras[i].verified"
+            (keypress)="inicializarContador($event, i)"
+            type="text">
+          </div>
+          <div class="col-md-2">
+            <span>{{getTiempo(i)}} ms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
