@@ -10,7 +10,6 @@ export class PalabraComponent implements OnInit {
   palabras: Array<string> = ["perro", "gato", "zapatilla"];
   inputPalabras: Array<any> = [{}, {}, {}];
 
-
   constructor() { }
 
   verificar(i) {
