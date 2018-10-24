@@ -7,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PalabraComponent implements OnInit {
 
-  palabras: Array<string> = ["perro", "gato", "zapatilla"];
-  inputPalabras: Array<any> = [{}, {}, {}];
+  public palabras: Array<string>;
+  public inputPalabras: Array<any>;
+  public test;
+  public palabraNueva;
 
-  constructor() { }
+  constructor() {
+    this.test = this.refrescarCampos;
+    this.palabras = ["perro", "gato", "zapatilla", "hola"];
+    this.inputPalabras = [];
+  }
+
+  refreshInputs() {
+    for (let i = 0; i < this.inputPalabras.length; i++) {
+      this.inputPalabras[i] = {};
+    }
+  }
 
   verificar(i) {
     if (this.palabras[i] === this.inputPalabras[i].valor ) {
@@ -35,7 +47,20 @@ export class PalabraComponent implements OnInit {
     return 0;
   }
 
+  public refrescarCampos(): void {
+    for (let i = 0; i < this.palabras.length; i++) {
+      this.inputPalabras[i] = {};
+    }
+  }
+
+  public agregarPalabra(palabra:string) {
+    this.palabras.push(palabra);
+    this.palabraNueva = "";
+    this.test();
+  }
+
   ngOnInit() {
+    this.test();
   }
 
 }
