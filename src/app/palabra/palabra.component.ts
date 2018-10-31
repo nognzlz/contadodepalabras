@@ -12,10 +12,43 @@ export class PalabraComponent implements OnInit {
   public test;
   public palabraNueva;
 
+  public palabrasEnIngles = ["dog", "cat", "fish", "pencil", "chair"];
+
+  public diccionario = {
+    dog: "perro",
+    cat: "gato",
+    fish: "pez",
+    pencil: "lapiz"
+  }
+
   constructor() {
     this.test = this.refrescarCampos;
-    this.palabras = ["perro", "gato", "zapatilla", "hola"];
+    this.palabras = ["dog", "gato", "zapatilla", "hola"];
     this.inputPalabras = [];
+  }
+
+  colorearPalabra(palabra) {
+    if (this.palabrasEnIngles.indexOf(palabra) !== -1) {
+      return "blue";
+    }
+    return "green";
+  }
+
+  // pintarPalabraSegunTiempo(i){
+  //   // if(this.getTiempo(i) > 800){
+  //   //   return "red";
+  //   // }
+  //   // return "green";
+
+  //   return this.getTiempo(i) > 800 ? "red" : "green";
+  // }
+
+  traducir(palabra) {
+    let index = this.palabras.indexOf(palabra);
+
+    let palabraTraducida = this.diccionario[palabra];
+
+    this.palabras[index] = palabraTraducida;
   }
 
   refreshInputs() {

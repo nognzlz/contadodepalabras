@@ -11,8 +11,8 @@
       <div class="col-md-6 offset-md-3">
         <div class="form-group" *ngFor="let palabra of palabras; let i = index">
           <div class="row">
-            <label for="palabra" class="col-md-2 col-form-label">{{palabra + ": "}}</label>
-            <div class="col-md-7">
+            <label for="palabra" class="col-md-2 col-form-label" [ngStyle]="{color: colorearPalabra(palabra)}">{{palabra + ": "}}</label>
+            <div class="col-md-5">
               <input id="palabra" class="form-control" 
               [(ngModel)]="inputPalabras[i].valor" 
               (ngModelChange)="verificar(i)" 
@@ -21,7 +21,10 @@
               type="text">
             </div>
             <div class="col-md-3">
-              <span>{{getTiempo(i)}} ms</span>
+              <span [ngStyle]="{color: this.getTiempo(i) > 800 ? 'red' : 'green'}">{{getTiempo(i)}} ms</span>
+            </div>
+            <div class="col-md-2">
+              <button (click)="traducir(palabra)" *ngIf="palabrasEnIngles.indexOf(palabra) > -1" class="btn btn-primary">Traducir</button>
             </div>
           </div>
         </div>
