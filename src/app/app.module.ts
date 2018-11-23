@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PalabraComponent } from './palabra/palabra.component';
+import { AgregarComponent } from './palabra/agregar/agregar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PalabraComponent
+    PalabraComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,
