@@ -1,0 +1,27 @@
+<div>
+    <div class="form-group" *ngFor="let palabra of palabras; let i = index">
+      <div class="row">
+        <label for="palabra" class="col-md-2 col-form-label" [ngStyle]="{color: colorearPalabra(palabra)}">{{palabra + ": "}}</label>
+        <div class="col-md-5">
+          <input id="palabra" class="form-control" 
+          [(ngModel)]="inputPalabras[i].valor" 
+          (ngModelChange)="verificar(i)" 
+          [disabled]="inputPalabras[i].verified"
+          (keypress)="inicializarContador($event, i)"
+          type="text">
+        </div>
+        <div class="col-md-3">
+          <span [ngStyle]="{color: this.getTiempo(i) > 800 ? 'red' : 'green'}">{{getTiempo(i)}} ms</span>
+        </div>
+        <div class="col-md-2">
+          <button (click)="traducir(palabra)" *ngIf="palabrasEnIngles.indexOf(palabra) > -1" class="btn btn-primary">Traducir</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button class="btn btn-primary pull-right"
+        (click)="refrescarCampos()">Refrescar!</button>
+      </div>
+    </div>
+  </div>

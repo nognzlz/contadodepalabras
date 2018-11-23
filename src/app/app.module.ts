@@ -5,12 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PalabraComponent } from './palabra/palabra.component';
 import { AgregarComponent } from './palabra/agregar/agregar.component';
+import { ListaComponent } from './palabra/lista/lista.component';
+import { ElementoComponent } from './palabra/lista/elemento/elemento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PalabraComponent,
-    AgregarComponent
+    AgregarComponent,
+    ListaComponent,
+    ElementoComponent
   ],
   imports: [
     BrowserModule,

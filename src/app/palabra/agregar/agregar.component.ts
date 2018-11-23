@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-agregar',
@@ -12,4 +12,14 @@ export class AgregarComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input() public palabras: Array<string>;
+
+  public palabraNueva: string;
+  public refrescarCampos: any;
+  
+  public agregarPalabra(palabra:string) {
+    this.palabras.push(palabra);
+    this.palabraNueva = "";
+    this.refrescarCampos();
+  }
 }
