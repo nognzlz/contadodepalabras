@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PalabraInput } from 'src/model/palabraInput.model';
 
 @Component({
   selector: '.app-palabra',
@@ -6,19 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./palabra.component.css']
 })
 export class PalabraComponent implements OnInit {
-  
   public palabras: Array<string>;
   public palabraNueva;
-  public inputPalabras: Array<{verified:boolean, t1: Date, t2:Date, valor:string}>;
+  public inputPalabras: Array<PalabraInput>;
   
   public refrescarCampos() {
     this.inputPalabras = this.palabras.map(function() {
-      return {
-        verified: false,
-        t1: undefined,
-        t2: undefined,
-        valor: ''
-      }
+      return new PalabraInput();
     })
   };
 

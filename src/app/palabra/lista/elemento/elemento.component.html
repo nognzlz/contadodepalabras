@@ -1,3 +1,19 @@
-<p>
-  elemento works!
-</p>
+<div class="form-group">
+  <div class="row">
+    <label for="palabra" class="col-md-2 col-form-label" [ngStyle]="{color: colorearPalabra()}">{{palabra + ": "}}</label>
+    <div class="col-md-5">
+      <input id="palabra" class="form-control" 
+      [(ngModel)]="input.valor" 
+      (ngModelChange)="verificar()" 
+      [disabled]="input.verified"
+      (keypress)="inicializarContador($event)"
+      type="text">
+    </div>
+    <div class="col-md-3">
+      <span [ngStyle]="{color: this.getTiempo() > 800 ? 'red' : 'green'}">{{getTiempo()}} ms</span>
+    </div>
+    <div class="col-md-2">
+      <button (click)="traducir()" *ngIf="estaEnIngles()" class="btn btn-primary">Traducir</button>
+    </div>
+  </div>
+</div>
