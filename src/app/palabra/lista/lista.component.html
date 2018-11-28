@@ -14,7 +14,7 @@
           <span [ngStyle]="{color: this.getTiempo(i) > 800 ? 'red' : 'green'}">{{getTiempo(i)}} ms</span>
         </div>
         <div class="col-md-2">
-          <button (click)="traducir(palabra)" *ngIf="palabrasEnIngles.indexOf(palabra) > -1" class="btn btn-primary">Traducir</button>
+          <button (click)="traducir(palabra)" *ngIf="estaEnIngles(palabra)" class="btn btn-primary">Traducir</button>
         </div>
       </div>
     </div>

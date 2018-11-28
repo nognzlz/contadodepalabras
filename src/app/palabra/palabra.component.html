@@ -9,10 +9,13 @@
     </div>
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <app-lista [palabras]="palabras"></app-lista>
+        <app-lista [valores]="palabras"
+                   [inputPalabras]="inputPalabras">
+        </app-lista>
         <br>
         <br>
-        <app-agregar [palabras]="palabras"></app-agregar>
+        <app-agregar [palabras]="palabras" (actualizarCampos)="refrescarCampos()">
+        </app-agregar>
       </div>
     </div>
   </div>

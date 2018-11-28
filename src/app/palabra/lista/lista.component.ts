@@ -6,31 +6,46 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
-  constructor() {
-    this.inputPalabras = new Array<{verified:boolean, t1: Date, t2:Date, valor:string}>();
-   }
+  constructor() {}
 
-  @Input() public palabras: Array<string>;
+  @Input('valores') public palabras: Array<string>;
 
-  public palabrasEnIngles = ["dog", "cat", "fish", "pencil", "chair"];
-  public inputPalabras: Array<{verified:boolean, t1: Date, t2:Date, valor:string}>;
+  @Input() public inputPalabras: {verified:boolean, t1: Date, t2:Date, valor:string};
 
-  public colorearPalabra(palabra) {
-    if (this.palabrasEnIngles.indexOf(palabra) !== -1) {
-      return "blue";
-    }
-    return "green";
+  public diccionario = {
+    dog: "perro",
+    cat: "gato",
+    fish: "pez",
+    pencil: "lapiz"
   }
 
-  refreshInputs() {
-    for (let i = 0; i < this.inputPalabras.length; i++) {
-      this.inputPalabras[i] = {
-        verified: false,
-        t1: undefined,
-        t2: undefined,
-        valor: ''
-      };
+  public estaEnIngles(palabra):boolean {
+    return Object.keys(this.diccionario).indexOf(palabra) > -1;
+  }
+
+  public colorearPalabra(palabra) {
+    return this.estaEnIngles(palabra) ? 'blue' : 'green';
+  }
+
+  traducir(palabra) {
+    let index = this.palabras.indexOf(palabra);
+
+    let palabraTraducida = this.diccionario[palabra];
+
+    this.palabras[index] = palabraTraducida;
+  }
+
+  public walter() {
+
+    let hijoDeWalter = function(parametro) {
+      return hijo2DeWalter;
     }
+
+    let hijo2DeWalter = function() {
+      return "soy el hijo2 de walter";
+    }
+
+    console.log("soy walter");
   }
 
   verificar(i) {
@@ -56,19 +71,6 @@ export class ListaComponent implements OnInit {
     return 0;
   }
 
-  public refrescarCampos(): void {
-    for (let i = 0; i < this.palabras.length; i++) {
-      this.inputPalabras[i] = {
-        verified: false,
-        t1: undefined,
-        t2: undefined,
-        valor: ''
-      };
-    }
-  }
-
-  ngOnInit() {
-    this.refrescarCampos();
-  }
+  ngOnInit() {}
 
 }

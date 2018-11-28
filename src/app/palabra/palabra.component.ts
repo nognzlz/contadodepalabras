@@ -6,29 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./palabra.component.css']
 })
 export class PalabraComponent implements OnInit {
-
+  
   public palabras: Array<string>;
   public palabraNueva;
-
+  public inputPalabras: Array<{verified:boolean, t1: Date, t2:Date, valor:string}>;
   
-
-  public diccionario = {
-    dog: "perro",
-    cat: "gato",
-    fish: "pez",
-    pencil: "lapiz"
-  }
+  public refrescarCampos() {
+    this.inputPalabras = this.palabras.map(function() {
+      return {
+        verified: false,
+        t1: undefined,
+        t2: undefined,
+        valor: ''
+      }
+    })
+  };
 
   constructor() {
     this.palabras = ["dog", "gato", "zapatilla", "hola"];
-  }
-
-  traducir(palabra) {
-    let index = this.palabras.indexOf(palabra);
-
-    let palabraTraducida = this.diccionario[palabra];
-
-    this.palabras[index] = palabraTraducida;
+    this.refrescarCampos();
   }
 
   ngOnInit() {}
